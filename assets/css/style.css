@@ -102,17 +102,71 @@ h2 {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../img/ristorante_tre_re__1400954354_727580319217294441_332465198.jpg");
+  z-index: 0;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(188, 142, 72, 0.2), transparent 48%),
+    radial-gradient(circle at 84% 76%, rgba(74, 31, 35, 0.2), transparent 44%);
+}
+
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
   background-size: cover;
   background-position: center;
-  filter: saturate(0.62) sepia(0.3) contrast(1.06) brightness(0.62);
-  transform: scale(1.04);
+  filter: saturate(0.64) sepia(0.28) contrast(1.06) brightness(0.54);
+  transform: scale(1.01);
+  animation: heroCrossfade 18s ease-in-out infinite;
+  animation-fill-mode: both;
+}
+
+.hero-slide--1 {
+  background-image: url("../img/tavola-upscaled.jpeg");
+  animation-delay: 0s;
+}
+
+.hero-slide--2 {
+  background-image: url("../img/interno-upscaled.jpeg");
+  animation-delay: -12s;
+}
+
+.hero-slide--3 {
+  background-image: url("../img/insegna-upscaled.jpeg");
+  animation-delay: -6s;
+}
+
+@keyframes heroCrossfade {
+  0% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  27% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 0;
+  }
+  94% {
+    opacity: 0;
+    transform: scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
 }
 
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(105deg, rgba(20, 12, 10, 0.86) 10%, rgba(53, 20, 24, 0.7) 42%, rgba(45, 20, 24, 0.54) 62%, rgba(20, 11, 10, 0.8) 100%),
     linear-gradient(180deg, rgba(151, 108, 61, 0.3) 0%, transparent 45%, rgba(10, 7, 6, 0.72) 100%);
@@ -120,7 +174,7 @@ h2 {
 
 .hero-inner {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: 780px;
   padding: clamp(6.8rem, 14vh, 8rem) 0 6.4rem;
 }
@@ -144,7 +198,7 @@ h2 {
 .lead {
   font-size: clamp(1.08rem, 2vw, 1.34rem);
   max-width: 63ch;
-  margin: 0 0 2rem;
+  margin: 0 0 1.45rem;
   color: #f4e7d3;
 }
 
@@ -166,11 +220,42 @@ h2 {
   transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
 }
 
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
 .cta:hover,
 .cta:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 16px 35px rgba(15, 8, 8, 0.38);
   border-color: rgba(221, 192, 140, 0.8);
+}
+
+.cta-outline {
+  background:
+    linear-gradient(160deg, rgba(188, 148, 81, 0.11), rgba(40, 19, 23, 0.55));
+  border-color: rgba(226, 198, 152, 0.72);
+}
+
+.hero-contacts {
+  margin: 0.85rem 0 0;
+  font-size: 1.02rem;
+  color: #eadcc7;
+}
+
+.hero-contacts a {
+  color: #f5dfb5;
+  font-weight: 700;
+  text-decoration-color: rgba(245, 223, 181, 0.55);
+  text-underline-offset: 3px;
+}
+
+.hero-contacts a:hover,
+.hero-contacts a:focus-visible {
+  text-decoration-color: rgba(245, 223, 181, 0.95);
 }
 
 .hero-frame {
@@ -416,12 +501,98 @@ h2 {
 
 .footer-list {
   margin: 0;
-  padding-left: 1.05rem;
+  padding: 0;
+  list-style: none;
   color: #c8b49a;
 }
 
 .footer-list li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.footer-link {
+  color: #d8c2a0;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms ease, color 200ms ease;
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: #f2e1c5;
+  border-color: rgba(242, 225, 197, 0.65);
+}
+
+.footer-actions {
+  margin-top: 1rem;
+}
+
+.footer-contact-cards {
+  display: grid;
+  gap: 0.62rem;
+}
+
+.footer-contact-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.62rem 0.72rem;
+  border: 1px solid rgba(213, 177, 121, 0.28);
+  background: linear-gradient(145deg, rgba(81, 37, 40, 0.35), rgba(25, 12, 13, 0.5));
+  color: #e8d5b7;
+  text-decoration: none;
+  transition: border-color 220ms ease, transform 220ms ease, background-color 220ms ease;
+}
+
+.footer-contact-card span {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c8b08a;
+}
+
+.footer-contact-card strong {
+  font-size: 1rem;
+  color: #f3e6d2;
+  font-weight: 700;
+}
+
+.footer-contact-card:hover,
+.footer-contact-card:focus-visible {
+  border-color: rgba(231, 198, 143, 0.55);
+  transform: translateY(-1px);
+  background: linear-gradient(145deg, rgba(97, 45, 49, 0.43), rgba(31, 15, 16, 0.56));
+}
+
+.footer-social-row {
+  margin-top: 0.72rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.58rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.4rem 0.72rem;
+  border: 1px solid rgba(213, 177, 121, 0.28);
+  text-decoration: none;
+  color: #dbc6a4;
+  font-size: 0.84rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(66, 30, 34, 0.28);
+  transition: color 220ms ease, border-color 220ms ease, background-color 220ms ease;
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  color: #f5e6cf;
+  border-color: rgba(234, 198, 138, 0.52);
+  background: rgba(83, 38, 42, 0.42);
 }
 
 .footer-signature {
@@ -476,6 +647,12 @@ h2 {
     line-height: 0.99;
   }
 
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 340px;
+  }
+
   .legacy-grid {
     grid-template-columns: 1fr;
   }
@@ -490,6 +667,11 @@ h2 {
 
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-contact-card {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .hero-frame::before {
@@ -525,5 +707,14 @@ h2 {
     animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .hero-slide {
+    animation: none !important;
+    opacity: 0;
+  }
+
+  .hero-slide--1 {
+    opacity: 1;
   }
 }
