@@ -22,6 +22,8 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
@@ -30,6 +32,11 @@ body {
   font-family: "Alegreya Sans", sans-serif;
   color: var(--ink);
   line-height: 1.7;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   background:
     radial-gradient(circle at 25% 12%, rgba(255, 255, 255, 0.7), transparent 45%),
     radial-gradient(circle at 85% 80%, rgba(132, 83, 31, 0.08), transparent 43%),
@@ -39,6 +46,10 @@ body {
 body::before {
   content: "";
   position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0;
   pointer-events: none;
   background-image: repeating-linear-gradient(
@@ -54,10 +65,18 @@ body::before {
 img {
   display: block;
   width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  display: block;
+  max-width: 100%;
 }
 
 .container {
-  width: min(1120px, 92vw);
+  width: 92vw;
+  max-width: 1120px;
   margin-inline: auto;
 }
 
@@ -92,6 +111,7 @@ h2 {
 
 .hero {
   position: relative;
+  min-height: 92vh;
   min-height: max(760px, 92svh);
   display: grid;
   place-items: center;
@@ -102,6 +122,10 @@ h2 {
 .hero::before {
   content: "";
   position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0;
   z-index: 0;
   background:
@@ -111,12 +135,20 @@ h2 {
 
 .hero-slideshow {
   position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0;
   z-index: 0;
 }
 
 .hero-slide {
   position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0;
   opacity: 0;
   background-size: cover;
@@ -166,6 +198,10 @@ h2 {
 .hero::after {
   content: "";
   position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0;
   z-index: 1;
   background:
@@ -261,6 +297,10 @@ h2 {
 
 .hero-frame {
   position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0;
   z-index: 2;
   pointer-events: none;
@@ -269,6 +309,10 @@ h2 {
 .hero-frame::before {
   content: "";
   position: absolute;
+  top: 1.3rem;
+  right: 1.3rem;
+  bottom: 1.3rem;
+  left: 1.3rem;
   inset: 1.3rem;
   border: 1px solid rgba(216, 182, 122, 0.3);
 }
@@ -276,6 +320,10 @@ h2 {
 .hero-frame::after {
   content: "";
   position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
   inset: 1.5rem;
   background-image:
     url("../../adobe/floral-corner-top-left-rot.png"),
@@ -296,6 +344,10 @@ h2 {
 .ornate::before {
   content: "";
   position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0;
   z-index: 0;
   pointer-events: none;
@@ -592,6 +644,7 @@ h2 {
 .footer-hours-list strong {
   color: #f3e4cc;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .footer-contact-card {
@@ -618,6 +671,7 @@ h2 {
   font-size: 1rem;
   color: #f3e6d2;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .footer-contact-card:hover,
@@ -737,6 +791,7 @@ h2 {
 
 @media (max-width: 760px) {
   .hero {
+    min-height: 84vh;
     min-height: 84svh;
   }
 
@@ -788,10 +843,18 @@ h2 {
   }
 
   .hero-frame::before {
+    top: 0.85rem;
+    right: 0.85rem;
+    bottom: 0.85rem;
+    left: 0.85rem;
     inset: 0.85rem;
   }
 
   .hero-frame::after {
+    top: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
     inset: 1rem;
   }
 
@@ -800,6 +863,17 @@ h2 {
     background-position:
       left 0.5rem top 0.5rem,
       right 0.5rem bottom 0.5rem;
+  }
+}
+
+@supports not (aspect-ratio: 1 / 1) {
+  .legacy-photo img,
+  .gallery-item img {
+    height: 240px;
+  }
+
+  .dish-card img {
+    height: 220px;
   }
 }
 
