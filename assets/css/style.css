@@ -866,6 +866,80 @@ h2 {
   }
 }
 
+/* Defensive fallback for older/quirky mobile browsers */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .hero {
+    min-height: 78vh;
+    background:
+      linear-gradient(150deg, rgba(20, 12, 10, 0.82), rgba(45, 20, 24, 0.82)),
+      url("../img/tavola-upscaled.jpeg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .hero-slideshow {
+    display: none;
+  }
+
+  .hero::before,
+  .hero-frame,
+  .ornate::before {
+    display: none;
+  }
+
+  .hero h1 {
+    text-wrap: wrap;
+  }
+
+  .hero-slide,
+  .legacy-photo img,
+  .gallery-item img {
+    transform: none !important;
+    animation: none !important;
+    filter: none !important;
+  }
+
+  .dish-card img {
+    filter: none;
+  }
+
+  .dish-card:hover,
+  .dish-card:focus-within,
+  .gallery-item:hover,
+  .cta:hover,
+  .cta:focus-visible,
+  .footer-contact-card:hover,
+  .footer-contact-card:focus-visible {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@supports not (display: grid) {
+  .legacy-grid,
+  .card-grid,
+  .gallery-grid,
+  .footer-grid,
+  .footer-contact-cards {
+    display: block;
+  }
+
+  .legacy-grid > *,
+  .card-grid > *,
+  .gallery-grid > *,
+  .footer-grid > * {
+    margin-top: 1rem;
+  }
+
+  .legacy-grid > *:first-child,
+  .card-grid > *:first-child,
+  .gallery-grid > *:first-child,
+  .footer-grid > *:first-child {
+    margin-top: 0;
+  }
+}
+
 @supports not (aspect-ratio: 1 / 1) {
   .legacy-photo img,
   .gallery-item img {
