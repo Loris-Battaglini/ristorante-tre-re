@@ -505,7 +505,7 @@ h2 {
 }
 
 .legacy-shot img {
-  filter: grayscale(0.9) sepia(0.38) contrast(1.02);
+  filter: grayscale(100%) contrast(1.08) brightness(0.95);
 }
 
 .now-shot img {
@@ -915,12 +915,16 @@ h2 {
     text-wrap: wrap;
   }
 
-  .hero-slide,
+  .hero-slide {
+    transform: none !important;
+    animation: none !important;
+    filter: none !important;
+  }
+
   .legacy-photo img,
   .gallery-item img {
     transform: none !important;
     animation: none !important;
-    filter: none !important;
   }
 
   .dish-card img {
@@ -987,6 +991,12 @@ h2 {
   .eyebrow {
     font-size: 0.74rem;
     letter-spacing: 0.16em;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) and (max-width: 900px) {
+  .mobile-hide-on-phone {
+    display: none;
   }
 }
 
