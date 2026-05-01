@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ristorante Tre Re | Dal 1600 il sapore della storia</title>
   <meta name="description" content="Ristorante Tre Re, il locale più antico di Viterbo: quattro secoli di ospitalità, cucina tipica e tradizione nel cuore medievale della città.">
-  <link rel="stylesheet" href="css/style.css?v=20260501-3">
+  <link rel="stylesheet" href="css/style.css?v=20260501-4">
 </head>
 <body>
   <header class="hero">
@@ -190,10 +190,13 @@
           <a class="cta" href="https://wa.me/393395800321?text=Buongiorno%2C%20vorrei%20prenotare%20un%20tavolo%20al%20Ristorante%20Tre%20Re." target="_blank" rel="noopener noreferrer">Prenota su WhatsApp</a>
         </div>
         <div class="footer-map-wrap">
+          <button class="footer-map-load" type="button" data-map-load>
+            Tocca per caricare la mappa interattiva
+          </button>
           <iframe
             class="footer-map"
             title="Mappa del Ristorante Tre Re a Viterbo"
-            src="https://maps.google.com/maps?q=Ristorante+Tre+Re,+Via+Macel+Gattesco+3,+Viterbo&z=17&output=embed"
+            data-src="https://maps.google.com/maps?q=Ristorante+Tre+Re,+Via+Macel+Gattesco+3,+Viterbo&z=17&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
           <a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&query=Ristorante+Tre+Re,+Via+Macel+Gattesco+3,+Viterbo" target="_blank" rel="noopener noreferrer">Apri il ristorante su Google Maps</a>
@@ -202,5 +205,23 @@
     </div>
     <p class="footer-signature">Ristorante Tre Re - Dal XVII Secolo</p>
   </footer>
+  <script>
+    (function () {
+      var mapButton = document.querySelector("[data-map-load]");
+      var mapFrame = document.querySelector(".footer-map");
+      if (!mapButton || !mapFrame) return;
+
+      function loadMap() {
+        if (mapFrame.getAttribute("src")) return;
+        var src = mapFrame.getAttribute("data-src");
+        if (!src) return;
+        mapFrame.setAttribute("src", src);
+        mapFrame.classList.add("is-loaded");
+        mapButton.hidden = true;
+      }
+
+      mapButton.addEventListener("click", loadMap);
+    })();
+  </script>
 </body>
 </html>

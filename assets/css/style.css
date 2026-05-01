@@ -465,7 +465,7 @@ h2 {
 .gallery {
   background:
     linear-gradient(180deg, rgba(56, 26, 29, 0.94) 0%, rgba(34, 15, 18, 0.98) 100%),
-    url("../../adobe/AdobeStock_529003800.jpeg");
+    url("../img/AdobeStock_529003800.jpeg");
   background-size: cover;
   background-position: center;
   color: #f5ecde;
@@ -724,7 +724,30 @@ h2 {
   width: 100%;
   height: 185px;
   border: 1px solid rgba(214, 179, 121, 0.36);
+  display: none;
+}
+
+.footer-map.is-loaded {
   display: block;
+}
+
+.footer-map-load {
+  width: 100%;
+  min-height: 3.1rem;
+  padding: 0.68rem 0.85rem;
+  border: 1px solid rgba(214, 179, 121, 0.36);
+  background: linear-gradient(150deg, rgba(84, 40, 44, 0.5), rgba(24, 11, 12, 0.6));
+  color: #f0debe;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.footer-map-load:hover,
+.footer-map-load:focus-visible {
+  border-color: rgba(236, 204, 152, 0.58);
+  color: #f8e9d2;
 }
 
 .footer-map-link {
